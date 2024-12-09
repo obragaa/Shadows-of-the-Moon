@@ -252,6 +252,7 @@ public class SceneManager {
         }
 
         exploredSectors.add(sector);
+
         String clue = switch (choice) {
             case 1 -> "Fragmento de vidro com sangue";
             case 2 -> "Log Criptografado";
@@ -261,8 +262,17 @@ public class SceneManager {
             default -> null;
         };
 
-        if (clue != null) {
-            revealClue(clue, "scenes/" + sector.toLowerCase().replace(" ", "_") + ".txt");
+        String filePath = switch (choice) {
+            case 1 -> "scenes/laboratory.txt";
+            case 2 -> "scenes/control_room.txt";
+            case 3 -> "scenes/lodgings.txt";
+            case 4 -> "scenes/mines.txt";
+            case 5 -> "scenes/dome.txt";
+            default -> null;
+        };
+
+        if (filePath != null) {
+            revealClue(clue, filePath);
         }
     }
 
