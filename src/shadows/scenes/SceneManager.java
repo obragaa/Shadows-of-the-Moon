@@ -1,6 +1,7 @@
 package shadows.scenes;
 
 import shadows.characters.Detective;
+import shadows.items.SpecialItem;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -30,7 +31,20 @@ public class SceneManager {
     }
 
     public void startGame() {
+        detective.introduce(); // Apresenta o detetive
         printIntro();
+
+        // Adicionando o SpecialItem de forma fixa
+        SpecialItem specialItem = new SpecialItem(
+            "Chave Antiga",
+            "Uma chave enferrujada com símbolos estranhos.",
+            "Abre uma porta secreta"
+        );
+
+        specialItem.inspect();
+        System.out.println(specialItem.getDescription());
+        specialItem.useItem();
+
         displaySuspectList();
         mainMenu();
     }
